@@ -2,23 +2,32 @@
 
 import Image from "next/image";
 import { ArrowRight } from "lucide-react";
-import { motion } from "framer-motion";
+import { motion, type Variants } from "framer-motion";
 
 export default function Hero() {
-  const containerVariants = {
+  const containerVariants: Variants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      transition: { staggerChildren: 0.1, delayChildren: 0.1 },
+      transition: {
+        staggerChildren: 0.1,
+        delayChildren: 0.1,
+      },
     },
   };
 
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
+  const itemVariants: Variants = {
+    hidden: {
+      opacity: 0,
+      y: 20,
+    },
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] },
+      transition: {
+        duration: 0.6,
+        ease: [0.16, 1, 0.3, 1] as const,
+      },
     },
   };
 
@@ -102,11 +111,13 @@ export default function Hero() {
             className="section-description text-gray-300 max-w-xl"
           >
             I empower individuals with practical tools for{" "}
-            <span className="text-blue-600 font-medium">holistic well-being</span>{" "}
+            <span className="text-blue-600 font-medium">
+              holistic well-being
+            </span>{" "}
             and physical restoration. I integrate restorative biodynamic touch,
-            traditional Japanese bodywork, sound frequency healing, and celestial
-            guidance to help you navigate life with clarity, while spreading
-            compassion to{" "}
+            traditional Japanese bodywork, sound frequency healing, and
+            celestial guidance to help you navigate life with clarity, while
+            spreading compassion to{" "}
             <span className="text-blue-600 font-medium">
               live as one global family
             </span>
@@ -117,16 +128,19 @@ export default function Hero() {
             variants={itemVariants}
             className="flex flex-wrap items-center gap-2 mt-6"
           >
-            {["CST Therapy", "Rakkenho Therapy", "Sound Therapy", "Vedic Astrology"].map(
-              (item) => (
-                <span
-                  key={item}
-                  className="small-label px-3 py-1.5 sm:px-4 sm:py-2 rounded-full border border-white/10 bg-white/5 text-gray-300 backdrop-blur-sm"
-                >
-                  {item}
-                </span>
-              )
-            )}
+            {[
+              "CST Therapy",
+              "Rakkenho Therapy",
+              "Sound Therapy",
+              "Vedic Astrology",
+            ].map((item) => (
+              <span
+                key={item}
+                className="small-label px-3 py-1.5 sm:px-4 sm:py-2 rounded-full border border-white/10 bg-white/5 text-gray-300 backdrop-blur-sm"
+              >
+                {item}
+              </span>
+            ))}
           </motion.div>
 
           <motion.div
