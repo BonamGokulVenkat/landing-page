@@ -1,0 +1,211 @@
+@import "tailwindcss";
+
+:root {
+  /* ==================================================================
+     COLOR SCHEME OPTIONS (Popping & Rich Color Palettes)
+     To switch, uncomment one palette and comment out the others.
+     ================================================================== */
+
+  /* --- PALETTE 1: Ink Wash / Sumi-e (ACTIVE DEFAULT) --- */
+  --color-paper: #F5F5F3;
+  --color-ink: #0F0F0F;
+  --color-ink-soft: #545454;
+  --color-moss: #707070;
+  --color-moss-dark: #2B2B2B;
+  --color-clay: #B93A32;
+  --color-stone: #D6D6D6;
+  --color-stone-light: #EAEAEA;
+  --color-border-active: #B93A32;
+}
+
+@theme inline {
+  --color-paper: var(--color-paper);
+  --color-ink: var(--color-ink);
+  --color-ink-soft: var(--color-ink-soft);
+  --color-moss: var(--color-moss);
+  --color-moss-dark: var(--color-moss-dark);
+  --color-clay: var(--color-clay);
+  --color-stone: var(--color-stone);
+  --color-stone-light: var(--color-stone-light);
+  --color-border-active: var(--color-border-active);
+
+  --font-display: var(--font-display);
+  --font-body: var(--font-body);
+  --font-poppins: var(--font-poppins);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-body), ui-sans-serif, system-ui, sans-serif;
+  overflow-x: hidden;
+}
+
+/* ==========================================================
+   GLOBAL TYPOGRAPHY CONSISTENCY HELPERS
+   Use these classes for repeated text patterns.
+   ========================================================== */
+
+.section-eyebrow {
+  font-family: var(--font-body), ui-sans-serif, system-ui, sans-serif;
+  font-size: 10px;
+  line-height: 1.4;
+  font-weight: 700;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+}
+
+.section-title {
+  font-family: var(--font-display), serif;
+  font-size: clamp(2.25rem, 5vw, 3.75rem);
+  line-height: 1.1;
+  font-weight: 500;
+  letter-spacing: -0.03em;
+}
+
+.section-description {
+  font-family: var(--font-body), ui-sans-serif, system-ui, sans-serif;
+  font-size: clamp(0.875rem, 1.4vw, 1rem);
+  line-height: 1.75;
+  font-weight: 300;
+}
+
+.body-text {
+  font-family: var(--font-body), ui-sans-serif, system-ui, sans-serif;
+  font-size: 0.875rem;
+  line-height: 1.75;
+  font-weight: 300;
+}
+
+.small-label {
+  font-family: var(--font-body), ui-sans-serif, system-ui, sans-serif;
+  font-size: 10px;
+  line-height: 1.4;
+  font-weight: 700;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+}
+
+.nav-label {
+  font-family: var(--font-body), ui-sans-serif, system-ui, sans-serif;
+  font-size: 11px;
+  line-height: 1.4;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.button-label {
+  font-family: var(--font-body), ui-sans-serif, system-ui, sans-serif;
+  font-size: 12px;
+  line-height: 1.4;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.card-title {
+  font-family: var(--font-display), serif;
+  font-size: clamp(1.5rem, 2.4vw, 2rem);
+  line-height: 1.2;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+}
+
+.card-body {
+  font-family: var(--font-body), ui-sans-serif, system-ui, sans-serif;
+  font-size: clamp(0.875rem, 1.2vw, 1rem);
+  line-height: 1.75;
+  font-weight: 300;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--color-ink);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Custom continuous scrolling marquee animations */
+@keyframes marquee {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+.animate-marquee-scroll {
+  display: flex;
+  width: max-content;
+  animation: marquee 35s linear infinite;
+}
+
+/* Smooth zoom-in/out transitions */
+.transition-all-custom {
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Custom thin scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #d4d4d8;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #a1a1aa;
+}
+
+/* For Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #d4d4d8 transparent;
+}
+
+/* Highlight text style */
+.highlight-marker {
+  font-weight: 700;
+  color: var(--color-clay);
+}
+
+/* Print and screenshot/recess page hider */
+@media print {
+  body {
+    display: none !important;
+  }
+}
+
+/* Obscure blur filter when window loses focus */
+body.obscured-blur {
+  filter: blur(25px) grayscale(100%);
+  pointer-events: none;
+  user-select: none;
+  transition: filter 0.15s ease-out;
+}
