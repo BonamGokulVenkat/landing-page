@@ -51,7 +51,7 @@ export default function RootLayout({
       className={`${displayFont.variable} ${bodyFont.variable} ${poppinsFont.variable} scroll-smooth`}
     >
       <body className="min-h-screen bg-paper text-ink antialiased">
-        
+        <CaptureProtection/>
         {children}
       </body>
     </html>
